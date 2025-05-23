@@ -35,4 +35,22 @@ for i in range(len(DNILista)): # Generación de los conjuntos de dígitos único
 
 
 
-   
+DNIs = {
+    "A": 35883893,
+    "B": 40481202,
+    "C": 39021321,
+    "D": 46604396,
+    "E": 36441560
+}
+
+# Generación de los conjuntos de dígitos únicos
+conjuntos = {}  # Guardamos los conjuntos de cada DNI
+
+for clave, dni in DNIs.items():
+    # Convertimos el número a string y lo transformamos en conjunto
+    conjuntos[clave] = set(str(dni))
+
+# Mostramos los conjuntos generados
+print("🔢 Conjuntos de dígitos únicos:")
+for clave, conjunto in conjuntos.items():
+    print(f"DNI {clave} ({DNIs[clave]}): {conjunto}")
