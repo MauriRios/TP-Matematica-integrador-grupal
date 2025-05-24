@@ -18,12 +18,12 @@ for clave, dni in DNIs.items():
 # Mostramos los conjuntos generados
 print("Conjuntos de dígitos únicos:")
 for clave, conjunto in conjuntos.items():
-    print(f"DNI {clave} ({DNIs[clave]}) Conjuntos de dígitos únicos:  {conjunto}")
+    print("\n" + f"DNI {clave} ({DNIs[clave]}) Conjuntos de dígitos únicos:  {conjunto}")
     listaConjuntos = []
     listaConjuntos.append(conjuntos)
     diccionarioDeConjuntos = listaConjuntos[0]
 
-print(f"Diccionario de conjuntos: {diccionarioDeConjuntos}")
+print("\n" + f"Diccionario de conjuntos: {diccionarioDeConjuntos}" + "\n")
 
 
 def calcular_uniones(diccionarioDeConjuntos):
@@ -117,9 +117,26 @@ def conteo_de_frecuencia_digitos_de_cada_dni(DNIs):
                 conteo[clave][digito] = 1
         print(f"Conteo de frecuencia de DNI{clave}: {conteo[clave]}" )
 
+def suma_total_digitos_de_cada_dni(DNIs):
+    suma = {}
+    for clave, dni in DNIs.items():
+        suma[clave] = sum(int(digito) for digito in str(dni))
+        print(f"Suma total de dígitos de DNI{clave}: {suma[clave]}")
+
 
 calcular_uniones(diccionarioDeConjuntos)
+print("-----------------------------------------------------")
+print("\n" + "Diferencia entre conjuntos:" + "\n")
 calcular_diferencia(diccionarioDeConjuntos)
+print("-----------------------------------------------------")
+print("\n" + "Intersección entre conjuntos:" + "\n")
 calcular_interseccion(diccionarioDeConjuntos)
+print("-----------------------------------------------------")
+print("\n" + "Diferencia simétrica entre conjuntos:" + "\n")
 calcular_diferencia_simetrica(diccionarioDeConjuntos)
+print("-----------------------------------------------------")
+print("\n" + "Conteo de frecuencia de dígitos de cada DNI:" + "\n")
 conteo_de_frecuencia_digitos_de_cada_dni(DNIs)
+print("-----------------------------------------------------")
+print("\n" + "Suma total de dígitos de cada DNI:" + "\n")
+suma_total_digitos_de_cada_dni(DNIs)
