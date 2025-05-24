@@ -108,18 +108,19 @@ def calcular_diferencia_simetrica(diccionarioDeConjuntos):
 
 def conteo_de_frecuencia_digitos_de_cada_dni(DNIs):
     conteo = {}
-    for clave, dni in DNIs.items():
-        conteo[clave] = {}
-        for digito in str(dni):
-            if digito in conteo[clave]:
-                conteo[clave][digito] += 1
+    for clave, dni in DNIs.items(): # Guardamos el conteo de cada DNI
+        conteo[clave] = {} # Inicializamos el conteo para cada DNI
+        for digito in str(dni): # Iteramos sobre cada dígito del DNI
+            if digito in conteo[clave]: # Si el dígito ya está en el conteo, incrementamos su frecuencia
+                conteo[clave][digito] += 1 # Si ya está, lo incrementamos
             else:
-                conteo[clave][digito] = 1
-        print(f"Conteo de frecuencia de DNI{clave}: {conteo[clave]}" )
+                conteo[clave][digito] = 1 # Si no está, lo inicializamos en 1
+        print(f"Conteo de frecuencia de DNI{clave}: {conteo[clave]}" ) # Hacemos un print para mostrar el conteo de cada DNI
+
 
 def suma_total_digitos_de_cada_dni(DNIs):
-    suma = {}
-    for clave, dni in DNIs.items():
+    suma = {} 
+    for clave, dni in DNIs.items(): 
         suma[clave] = sum(int(digito) for digito in str(dni))
         print(f"Suma total de dígitos de DNI{clave}: {suma[clave]}")
 
