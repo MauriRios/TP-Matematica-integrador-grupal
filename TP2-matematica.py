@@ -1,37 +1,3 @@
-
-
-#Ingreso de los DNIs (reales o ficticios).
-#Generación automática de los conjuntos de dígitos únicos.
-
-DNIA = 35883893
-DNIB = 40481202
-DNIC = 39021321
-DNID = 46604396
-DNIE = 36441560
-
-DNILista = [DNIA, DNIB, DNIC, DNID, DNIE] 
-digitos_unicos = set() # Crear un conjunto para almacenar los dígitos únicos
-
-for i in range(len(DNILista)): # Generación de los conjuntos de dígitos únicos
-    # Obtener el DNI actual de la lista
-    DNI = DNILista[i]
-    # Convertir el DNI a una cadena para poder iterar sobre sus dígitos
-    DNI_str = str(DNI)
-
-    # Iterar sobre cada dígito en el DNI
-    for digito in DNI_str:
-        # Agregar el dígito al conjunto de dígitos únicos
-        digitos_unicos.add(digito)
-    
-    # Imprimir el conjunto de dígitos únicos
-    print(f"DNI: {DNI} - Dígitos únicos: {digitos_unicos}")
-#Cálculo y visualización de: unión, intersección, diferencias y diferencia simétrica.
-    print(f"{DNI_str}U{DNI_str} = {set.union(digitos_unicos)}")
-    #print(set.intersection(digitos_unicos))
-    #print(set.difference(digitos_unicos))
-    #print(set.symmetric_difference(digitos_unicos))
-
-
 DNIs = {
     "A": 35883893,
     "B": 40481202,
@@ -42,6 +8,8 @@ DNIs = {
 
 # Generación de los conjuntos de dígitos únicos
 conjuntos = {}  # Guardamos los conjuntos de cada DNI
+diccionarioDeConjuntos = {} # Guardamos el diccionario de conjuntos  
+
 
 for clave, dni in DNIs.items():
     # Convertimos el número a string y lo transformamos en conjunto
@@ -58,3 +26,88 @@ for clave, conjunto in conjuntos.items():
 print(f"Diccionario de conjuntos: {diccionarioDeConjuntos}")
 
 
+def calcular_uniones(diccionarioDeConjuntos):
+    claves = list(diccionarioDeConjuntos.keys())
+    resultados = {}
+
+    for i in range(len(claves)):
+        for j in range(i + 1, len(claves)):  # solo combina claves distintas y evita repetir
+            clave1 = claves[i]
+            clave2 = claves[j]
+            conjunto1 = diccionarioDeConjuntos[clave1]
+            conjunto2 = diccionarioDeConjuntos[clave2]
+            union = conjunto1 | conjunto2 # Unión (elementos en conjunto1 o conjunto2 excepto los repetidos)
+            clave_union = f"{clave1} ∪ {clave2}"
+            resultados[clave_union] = union 
+            print(f"{clave_union}: {union}")
+
+    return resultados
+
+def calcular_diferencia(diccionarioDeConjuntos):
+    claves = list(diccionarioDeConjuntos.keys())
+    resultados = {}
+
+    for i in range(len(claves)):
+        for j in range(i + 1, len(claves)):  # solo combina claves distintas y evita repetir
+            clave1 = claves[i]
+            clave2 = claves[j]
+            conjunto1 = diccionarioDeConjuntos[clave1]
+            conjunto2 = diccionarioDeConjuntos[clave2]
+            union = conjunto1 - conjunto2 # Diferencia (elementos en conjunto1 pero no en conjunto2)
+            clave_union = f"{clave1} - {clave2}"
+            resultados[clave_union] = union
+            print(f"{clave_union}: {union}")
+
+    # Calcular la diferencia en el sentido inverso ya que la diferencia no es conmutativa
+    for i in range(len(claves)):
+        for j in range(i + 1, len(claves)):  # solo combina claves distintas y evita repetir
+            clave1 = claves[i]
+            clave2 = claves[j]
+            conjunto1 = diccionarioDeConjuntos[clave1]
+            conjunto2 = diccionarioDeConjuntos[clave2]
+            union = conjunto2 - conjunto1 # Diferencia en el sentido inverso ya que no es conmutativa
+            clave_union = f"{clave2} - {clave1}" 
+            resultados[clave_union] = union
+            print(f"{clave_union}: {union}")
+
+    return resultados
+
+def calcular_interseccion(diccionarioDeConjuntos):
+    claves = list(diccionarioDeConjuntos.keys())
+    resultados = {}
+
+    for i in range(len(claves)):
+        for j in range(i + 1, len(claves)):  # solo combina claves distintas y evita repetir
+            clave1 = claves[i]
+            clave2 = claves[j]
+            conjunto1 = diccionarioDeConjuntos[clave1]
+            conjunto2 = diccionarioDeConjuntos[clave2]
+            union = conjunto1 & conjunto2 # Intersección (elementos comunes en ambos conjuntos)
+            clave_union = f"{clave1} ∩ {clave2}"
+            resultados[clave_union] = union
+            print(f"{clave_union}: {union}")
+
+    return resultados
+
+def calcular_diferencia_simetrica(diccionarioDeConjuntos):
+    claves = list(diccionarioDeConjuntos.keys())
+    resultados = {}
+
+    for i in range(len(claves)):
+        for j in range(i + 1, len(claves)):  # solo combina claves distintas y evita repetir 
+            clave1 = claves[i] 
+            clave2 = claves[j]
+            conjunto1 = diccionarioDeConjuntos[clave1]
+            conjunto2 = diccionarioDeConjuntos[clave2] 
+            union = conjunto1 ^ conjunto2  # Diferencia simétrica (elementos en conjunto1 o conjunto2, pero no en ambos) 
+            clave_union = f"{clave1} ∆ {clave2}" 
+            resultados[clave_union] = union 
+            print(f"{clave_union}: {union}") 
+
+    return resultados
+
+
+calcular_uniones(diccionarioDeConjuntos)
+calcular_diferencia(diccionarioDeConjuntos)
+calcular_interseccion(diccionarioDeConjuntos)
+calcular_diferencia_simetrica(diccionarioDeConjuntos)
