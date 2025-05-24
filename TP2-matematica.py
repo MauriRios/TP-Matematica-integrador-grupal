@@ -129,15 +129,11 @@ def suma_total_digitos_de_cada_dni(DNIs):
 
 def expresion_logica_uno(dic):
     '''Si el conjunto A tiene más elementos que el conjunto B y el conjunto C contiene al menos un número impar, entonces se cumple la condición de combinación amplia.'''
-    print('imprimiendo Diccionario')
     cont = 0
     for val in dic['C'] :
 
         if int(val) % 2 == 1:
             cont += 1
-            print(cont)
-        else:
-            print('El conjunto C no tiene impares')
 
     if ((len(dic['A']) >  len(dic['B'])) and cont > 0):
         print('Si el conjunto A tiene más elementos que el conjunto B y el conjunto C contiene al menos un número impar, entonces se cumple la condición de combinación amplia.')
@@ -145,7 +141,6 @@ def expresion_logica_uno(dic):
         print('Por lo que se cumple "la condición de combinación amplia"')
         
 
-expresion_logica_uno(diccionarioDeConjuntos)
 calcular_uniones(diccionarioDeConjuntos)
 print("-----------------------------------------------------")
 print("\n" + "Diferencia entre conjuntos:" + "\n")
@@ -162,3 +157,6 @@ conteo_de_frecuencia_digitos_de_cada_dni(DNIs)
 print("-----------------------------------------------------")
 print("\n" + "Suma total de dígitos de cada DNI:" + "\n")
 suma_total_digitos_de_cada_dni(DNIs)
+print("-----------------------------------------------------")
+print("\n" + "1° expresión lógica" + "\n")
+expresion_logica_uno(diccionarioDeConjuntos)
