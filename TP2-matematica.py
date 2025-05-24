@@ -1,5 +1,5 @@
 DNIs = {
-    "A": 40481202,
+    "A": 43481202,
     "B": 35883893,
     "C": 39021321,
     "D": 46604396,
@@ -139,7 +139,23 @@ def expresion_logica_uno(dic):
         print('Si el conjunto A tiene más elementos que el conjunto B y el conjunto C contiene al menos un número impar, entonces se cumple la condición de combinación amplia.')
         print(f'A = {len(dic['A'])} y B = {len(dic['B'])}, por lo tanto "A" es MAYOR que "B" y C = {dic['C']} contiene al menos {cont} elementos impares')
         print('Por lo que se cumple "la condición de combinación amplia"')
-        
+
+
+def expresion_logica_dos(dic):
+    '''Si algún dígito aparece en todos los conjuntos, se marca como dígito común.'''
+
+    # Tomamos la primera clave y su conjunto
+    claves = list(dic.keys())
+    comunes = dic[claves[0]].copy()
+
+    # Recorremos los elementos del conjunto base
+    for elemento in comunes.copy():  # usamos .copy() para no modificar mientras iteramos
+        for clave in claves[1:]: # Recorre solo los conjuntos del indice 1 en adelante
+            if elemento not in dic[clave]:
+                comunes.remove(elemento)
+                break #break detiene la verificación en cuanto se detecta que el elemento no está en uno de los conjuntos.
+    print("Dígitos comunes en todos los conjuntos:", comunes)
+
 
 calcular_uniones(diccionarioDeConjuntos)
 print("-----------------------------------------------------")
@@ -160,3 +176,7 @@ suma_total_digitos_de_cada_dni(DNIs)
 print("-----------------------------------------------------")
 print("\n" + "1° expresión lógica" + "\n")
 expresion_logica_uno(diccionarioDeConjuntos)
+print("-----------------------------------------------------")
+print("\n" + "2° expresión lógica" + "\n")
+expresion_logica_dos(diccionarioDeConjuntos)
+print("-----------------------------------------------------")
