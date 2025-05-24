@@ -16,7 +16,7 @@ for clave, dni in DNIs.items():
     conjuntos[clave] = set(str(dni))
 
 # Mostramos los conjuntos generados
-print("🔢 Conjuntos de dígitos únicos:")
+print("Conjuntos de dígitos únicos:")
 for clave, conjunto in conjuntos.items():
     print(f"DNI {clave} ({DNIs[clave]}) Conjuntos de dígitos únicos:  {conjunto}")
     listaConjuntos = []
@@ -106,8 +106,20 @@ def calcular_diferencia_simetrica(diccionarioDeConjuntos):
 
     return resultados
 
+def conteo_de_frecuencia_digitos_de_cada_dni(DNIs):
+    conteo = {}
+    for clave, dni in DNIs.items():
+        conteo[clave] = {}
+        for digito in str(dni):
+            if digito in conteo[clave]:
+                conteo[clave][digito] += 1
+            else:
+                conteo[clave][digito] = 1
+        print(f"Conteo de frecuencia de DNI{clave}: {conteo[clave]}" )
+
 
 calcular_uniones(diccionarioDeConjuntos)
 calcular_diferencia(diccionarioDeConjuntos)
 calcular_interseccion(diccionarioDeConjuntos)
 calcular_diferencia_simetrica(diccionarioDeConjuntos)
+conteo_de_frecuencia_digitos_de_cada_dni(DNIs)
