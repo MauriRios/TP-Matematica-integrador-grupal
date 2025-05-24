@@ -32,9 +32,6 @@ for i in range(len(DNILista)): # Generación de los conjuntos de dígitos único
     #print(set.symmetric_difference(digitos_unicos))
 
 
-
-
-
 DNIs = {
     "A": 35883893,
     "B": 40481202,
@@ -53,4 +50,11 @@ for clave, dni in DNIs.items():
 # Mostramos los conjuntos generados
 print("🔢 Conjuntos de dígitos únicos:")
 for clave, conjunto in conjuntos.items():
-    print(f"DNI {clave} ({DNIs[clave]}): {conjunto}")
+    print(f"DNI {clave} ({DNIs[clave]}) Conjuntos de dígitos únicos:  {conjunto}")
+    listaConjuntos = []
+    listaConjuntos.append(conjuntos)
+    listaConjuntosNormalizada = listaConjuntos[0]
+
+print(f"Lista de conjuntos: {listaConjuntosNormalizada}")
+
+
