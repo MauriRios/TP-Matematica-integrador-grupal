@@ -146,7 +146,7 @@ def expresion_logica_dos(dic):
 
     # Tomamos la primera clave y su conjunto
     claves = list(dic.keys())
-    comunes = dic[claves[0]].copy()
+    comunes = dic[claves[0]].copy() # Para no sobre escribir el valor por referencia en memoria generamos una copia
 
     # Recorremos los elementos del conjunto base
     for elemento in comunes.copy():  # usamos .copy() para no modificar mientras iteramos
