@@ -53,8 +53,8 @@ for clave, conjunto in conjuntos.items():
     print(f"DNI {clave} ({DNIs[clave]}) Conjuntos de dígitos únicos:  {conjunto}")
     listaConjuntos = []
     listaConjuntos.append(conjuntos)
-    listaConjuntosNormalizada = listaConjuntos[0]
+    diccionarioDeConjuntos = listaConjuntos[0]
 
-print(f"Lista de conjuntos: {listaConjuntosNormalizada}")
+print(f"Diccionario de conjuntos: {diccionarioDeConjuntos}")
 
 
