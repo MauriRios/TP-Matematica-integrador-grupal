@@ -43,6 +43,7 @@ def calcular_uniones(diccionarioDeConjuntos):
 
     return resultados
 
+
 def calcular_diferencia(diccionarioDeConjuntos):
     claves = list(diccionarioDeConjuntos.keys())
     resultados = {}
@@ -72,6 +73,7 @@ def calcular_diferencia(diccionarioDeConjuntos):
 
     return resultados
 
+
 def calcular_interseccion(diccionarioDeConjuntos):
     claves = list(diccionarioDeConjuntos.keys())
     resultados = {}
@@ -89,6 +91,7 @@ def calcular_interseccion(diccionarioDeConjuntos):
 
     return resultados
 
+
 def calcular_diferencia_simetrica(diccionarioDeConjuntos):
     claves = list(diccionarioDeConjuntos.keys())
     resultados = {}
@@ -105,6 +108,7 @@ def calcular_diferencia_simetrica(diccionarioDeConjuntos):
             print(f"{clave_union}: {union}") 
 
     return resultados
+
 
 def conteo_de_frecuencia_digitos_de_cada_dni(DNIs):
     conteo = {}
@@ -125,8 +129,6 @@ def suma_total_digitos_de_cada_dni(DNIs):
         print(f"Suma total de dígitos de DNI{clave}: {suma[clave]}")
 
 
-# Expresion Logica UNO:
-
 def expresion_logica_uno(dic):
     '''Si el conjunto A tiene más elementos que el conjunto B y el conjunto C contiene al menos un número impar, entonces se cumple la condición de combinación amplia.'''
     cont = 0
@@ -143,40 +145,53 @@ def expresion_logica_uno(dic):
 
 def expresion_logica_dos(dic):
     '''Si algún dígito aparece en todos los conjuntos, se marca como dígito común.'''
-
-    # Tomamos la primera clave y su conjunto
-    claves = list(dic.keys())
-    comunes = dic[claves[0]].copy() # Para no sobre escribir el valor por referencia en memoria generamos una copia
-
-    # Recorremos los elementos del conjunto base
-    for elemento in comunes.copy():  # usamos .copy() para no modificar mientras iteramos
-        for clave in claves[1:]: # Recorre solo los conjuntos del indice 1 en adelante
-            if elemento not in dic[clave]:
-                comunes.remove(elemento)
-                break #break detiene la verificación en cuanto se detecta que el elemento no está en uno de los conjuntos.
+    
+    # Lógica imperativa sin usar intersection()
+    conjuntos_valores = list(dic.values())
+    print(conjuntos_valores)
+    comunes = set()
+    
+    # Iteramos sobre cada elemento del primer conjunto
+    for elemento in conjuntos_valores[0]:
+        esta_en_todos = True
+        
+        # Verificamos si el elemento está en todos los demás conjuntos
+        for conjunto in conjuntos_valores[1:]:
+            if elemento not in conjunto:
+                esta_en_todos = False
+        
+        # Si está en todos, lo agregamos a comunes
+        if esta_en_todos:
+            comunes.add(elemento)
+    
     print("Dígitos comunes en todos los conjuntos:", comunes)
+    print(comunes)
 
 
-calcular_uniones(diccionarioDeConjuntos)
-print("-----------------------------------------------------")
-print("\n" + "Diferencia entre conjuntos:" + "\n")
-calcular_diferencia(diccionarioDeConjuntos)
-print("-----------------------------------------------------")
-print("\n" + "Intersección entre conjuntos:" + "\n")
-calcular_interseccion(diccionarioDeConjuntos)
-print("-----------------------------------------------------")
-print("\n" + "Diferencia simétrica entre conjuntos:" + "\n")
-calcular_diferencia_simetrica(diccionarioDeConjuntos)
-print("-----------------------------------------------------")
-print("\n" + "Conteo de frecuencia de dígitos de cada DNI:" + "\n")
-conteo_de_frecuencia_digitos_de_cada_dni(DNIs)
-print("-----------------------------------------------------")
-print("\n" + "Suma total de dígitos de cada DNI:" + "\n")
-suma_total_digitos_de_cada_dni(DNIs)
-print("-----------------------------------------------------")
-print("\n" + "1° expresión lógica" + "\n")
-expresion_logica_uno(diccionarioDeConjuntos)
-print("-----------------------------------------------------")
-print("\n" + "2° expresión lógica" + "\n")
 expresion_logica_dos(diccionarioDeConjuntos)
-print("-----------------------------------------------------")
+
+# print("-----------------------------------------------------")
+# print("\n" + "Unión de conjuntos:" + "\n")
+# calcular_uniones(diccionarioDeConjuntos)
+# print("-----------------------------------------------------")
+# print("\n" + "Diferencia entre conjuntos:" + "\n")
+# calcular_diferencia(diccionarioDeConjuntos)
+# print("-----------------------------------------------------")
+# print("\n" + "Intersección entre conjuntos:" + "\n")
+# calcular_interseccion(diccionarioDeConjuntos)
+# print("-----------------------------------------------------")
+# print("\n" + "Diferencia simétrica entre conjuntos:" + "\n")
+# calcular_diferencia_simetrica(diccionarioDeConjuntos)
+# print("-----------------------------------------------------")
+# print("\n" + "Conteo de frecuencia de dígitos de cada DNI:" + "\n")
+# conteo_de_frecuencia_digitos_de_cada_dni(DNIs)
+# print("-----------------------------------------------------")
+# print("\n" + "Suma total de dígitos de cada DNI:" + "\n")
+# suma_total_digitos_de_cada_dni(DNIs)
+# print("-----------------------------------------------------")
+# print("\n" + "1° expresión lógica" + "\n")
+# expresion_logica_uno(diccionarioDeConjuntos)
+# print("-----------------------------------------------------")
+# print("\n" + "2° expresión lógica" + "\n")
+# expresion_logica_dos(diccionarioDeConjuntos)
+# print("-----------------------------------------------------")
