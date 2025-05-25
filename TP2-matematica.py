@@ -141,7 +141,7 @@ def expresion_logica_uno(dic):
 
     if ((len(dic['A']) >  len(dic['B'])) and cont > 0):
         print('Si el conjunto A tiene más elementos que el conjunto B y el conjunto C contiene al menos un número impar, entonces se cumple la condición de combinación amplia.')
-        print(f'A = {len(dic['A'])} y B = {len(dic['B'])}, por lo tanto "A" es MAYOR que "B" y C = {dic['C']} contiene al menos {cont} elementos impares')
+        print(f"A = {len(dic['A'])} y B = {len(dic['B'])}, por lo tanto 'A' es MAYOR que 'B' y C = {dic['C']} contiene al menos {cont} elementos impares")
         print('Por lo que se cumple "la condición de combinación amplia"')
         
 

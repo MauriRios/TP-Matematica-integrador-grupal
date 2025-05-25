@@ -19,7 +19,7 @@ while True:
     print('-------------------------------------------------------------------------------')
 
     opcion = input('Ingresa tu opción: ') # Convertimos la opción a mayúscula por si el usuario utiliza minusculas 
-                                                          # eliminamos espacios en blanco al principio y al final.
+# eliminamos espacios en blanco al principio y al final.
 
     # Función para convertir decimal a binario de 8 bits
     def decimal_a_binario_8_bit():
