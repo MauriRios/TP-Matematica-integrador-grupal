@@ -146,7 +146,7 @@ def expresion_logica_uno(dic):
 def expresion_logica_dos(dic):
     '''Si algún dígito aparece en todos los conjuntos, se marca como dígito común.'''
     
-    # Lógica imperativa sin usar intersection()
+
     conjuntos_valores = list(dic.values())
     print(conjuntos_valores)
     comunes = set()
